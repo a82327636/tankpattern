@@ -22,7 +22,7 @@ public class TankFrame extends Frame {
 //    private static final int SPEED = 10;
 
     Tank tank = new Tank(200,200,Dir.DOWN);
-
+    Bullet bullet = new Bullet(300,300,Dir.DOWN);
 
     public TankFrame(){
 
@@ -46,8 +46,7 @@ public class TankFrame extends Frame {
     public void paint(Graphics g){
         //System.out.println("paint");
         tank.paint(g);
-        //x += 10;
-        //y += 10;
+        bullet.paint(g);
     }
 
 

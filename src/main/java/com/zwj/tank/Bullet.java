@@ -1,39 +1,41 @@
 package com.zwj.tank;
 
+import sun.misc.Cache;
+
 import java.awt.*;
 
 /**
  * @ProjectName: tankpattern
  * @Package: com.zwj.tank
- * @ClassName: Tank
+ * @ClassName: Bullet
  * @Author: zwj
  * @Description: 注释
- * @Date: 2020/11/23 14:58
+ * @Date: 2020/11/23 15:26
  * @Version: 1.0
  */
-public class Tank {
+public class Bullet {
 
-    private int x,y;
-    private Dir dir = Dir.DOWN;
     private static final int SPEED = 5;
-    private boolean moving = false;
+    private static int WIDTH = 30,HEIGHT = 30;
+    private int x,y;
+    private Dir dir;
 
-    public Tank(int x, int y, Dir dir) {
+    public Bullet(int x, int y, Dir dir) {
         this.x = x;
         this.y = y;
         this.dir = dir;
     }
 
-
     public void paint(Graphics g){
-        g.fillRect(x,y,50,50); // 绘画正方形
+        Color c = g.getColor();
+        g.setColor(Color.red);
+        g.fillOval(x,y,WIDTH,HEIGHT); // 绘画圆形
+        g.setColor(c);
         move();
     }
 
 
     private void move() {
-        if(!moving) return;
-
         switch (dir){
             case LEFT:
                 x-=SPEED;
@@ -48,23 +50,5 @@ public class Tank {
                 y+=SPEED;
                 break;
         }
-    }
-
-
-    public Dir getDir() {
-        return dir;
-    }
-
-    public void setDir(Dir dir) {
-        this.dir = dir;
-    }
-
-
-    public boolean isMoving() {
-        return moving;
-    }
-
-    public void setMoving(boolean moving) {
-        this.moving = moving;
     }
 }
