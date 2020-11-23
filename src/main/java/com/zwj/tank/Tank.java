@@ -26,7 +26,10 @@ public class Tank {
 
 
     public void paint(Graphics g){
+        Color c = g.getColor();
+        g.setColor(Color.yellow);
         g.fillRect(x,y,50,50); // 绘画正方形
+        g.setColor(c);
         move();
     }
 

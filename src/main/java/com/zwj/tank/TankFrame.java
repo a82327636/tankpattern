@@ -17,16 +17,15 @@ import java.awt.event.WindowEvent;
  */
 public class TankFrame extends Frame {
 
-//    int x = 200,y = 200;
-//    Dir dir = Dir.DOWN;
-//    private static final int SPEED = 10;
 
     Tank tank = new Tank(200,200,Dir.DOWN);
     Bullet bullet = new Bullet(300,300,Dir.DOWN);
+    static final int GAME_WIDTH = 800,GAME_HEIGHT=600;
+
 
     public TankFrame(){
 
-        setSize(800,600);
+        setSize(GAME_WIDTH,GAME_HEIGHT);
         setResizable(true);
         setVisible(true);
         setTitle("tank war");
@@ -39,6 +38,24 @@ public class TankFrame extends Frame {
                 System.exit(0);
             }
         });
+    }
+
+
+    Image offScreemImage = null;
+
+    // 双缓存解决闪烁问题
+    @Override
+    public void update(Graphics g){
+        if(offScreemImage == null){
+            offScreemImage = this.createImage(GAME_WIDTH,GAME_HEIGHT);
+        }
+        Graphics gOffScreen = offScreemImage.getGraphics();
+        Color c = gOffScreen.getColor();
+        gOffScreen.setColor(Color.black);
+        gOffScreen.fillRect(0,0,GAME_WIDTH,GAME_HEIGHT);
+        gOffScreen.setColor(c);
+        paint(gOffScreen);
+        g.drawImage(offScreemImage,0,0,null);
     }
 
 
