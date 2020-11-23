@@ -1,3 +1,5 @@
+package com.zwj.tank;
+
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -5,7 +7,7 @@ import java.awt.event.WindowEvent;
 /**
  * @ProjectName: tankpattern
  * @Package: PACKAGE_NAME
- * @ClassName: TankFrame
+ * @ClassName: com.zwj.tank.TankFrame
  * @Author: zwj
  * @Description: 注释
  * @Date: 2020/11/23 10:58
