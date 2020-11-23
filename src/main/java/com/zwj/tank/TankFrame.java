@@ -75,6 +75,11 @@ public class TankFrame extends Frame {
             bullets.get(i).paint(g);
         }
 
+//        for(Bullet bullet:bullets){
+//            bullet.paint(g);
+//        }
+//       上面的方法，在调用bullets.remove方法时会报错，因为上面的for循环内部使用了iterator
+
     }
 
 
