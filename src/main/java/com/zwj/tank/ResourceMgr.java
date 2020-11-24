@@ -20,6 +20,8 @@ public class ResourceMgr {
     public static BufferedImage bulletL,bulletU,bulletR,bulletD;
 
 
+    public static BufferedImage[] explode = new BufferedImage[16]; // 爆炸图片
+
 
     static{
         try {
