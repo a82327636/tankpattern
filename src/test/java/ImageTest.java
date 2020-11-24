@@ -5,6 +5,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
+import static jdk.nashorn.internal.objects.Global.print;
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.fail;
 
@@ -26,10 +27,13 @@ public class ImageTest {
         // assertNotNull(new Object());
 
         try {
-            BufferedImage bufferedImage = ImageIO.read(new File("D:/008.jpg"));
-            assertNotNull(bufferedImage);
+            //BufferedImage bufferedImage = ImageIO.read(new File("config/008.jpg"));
+            //assertNotNull(bufferedImage);
+
+            BufferedImage bufferedImage1= ImageIO.read(ImageTest.class.getClassLoader().getResourceAsStream("config/008.jpg"));
+            assertNotNull(bufferedImage1);
         } catch (Exception e) {
-            fail("shibai le");
+            e.getStackTrace();
         }
     }
 }
