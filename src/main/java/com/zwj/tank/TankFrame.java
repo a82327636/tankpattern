@@ -85,6 +85,17 @@ public class TankFrame extends Frame {
 //        }
 //       上面的方法，在调用bullets.remove方法时会报错，因为上面的for循环内部使用了iterator
 
+
+
+        for(int i=0;i<bullets.size();i++){
+            for(int j=0;j<tanks.size();j++){
+                bullets.get(i).collideWith(tanks.get(j));
+            }
+        }
+
+
+
+
     }
 
 
@@ -98,7 +109,6 @@ public class TankFrame extends Frame {
 
         @Override
         public void keyPressed(KeyEvent e) {
-            System.out.println("keyPressed");
             int key = e.getKeyCode();
             switch (key){
                 case KeyEvent.VK_LEFT:
@@ -131,7 +141,6 @@ public class TankFrame extends Frame {
 
         @Override
         public void keyReleased(KeyEvent e) {
-            System.out.println("keyReleased");
             int key = e.getKeyCode();
             switch (key){
                 case KeyEvent.VK_LEFT:
