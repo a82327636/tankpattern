@@ -1,6 +1,7 @@
 package com.zwj.tank;
 
 import java.awt.*;
+import java.util.Random;
 
 /**
  * @ProjectName: tankpattern
@@ -17,16 +18,21 @@ public class Tank {
     private Dir dir = Dir.DOWN;
     private static final int SPEED = 5;
     public static int WIDTH = ResourceMgr.bulletD.getWidth(),HEIGHT = ResourceMgr.bulletD.getHeight();
+
+    private Random random = new Random();
+
     private boolean moving = false;
     private boolean liveing = true;
 
-
+    private Group group = Group.BAD;
     private TankFrame tf;
 
-    public Tank(int x, int y, Dir dir,TankFrame tf) {
+    public Tank(int x, int y, Dir dir, Group group,TankFrame tf) {
+        super();
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.group = group;
         this.tf = tf;
     }
 
@@ -70,13 +76,19 @@ public class Tank {
                 y+=SPEED;
                 break;
         }
+
+        if(random.nextInt(10)>8){ // 移动之后，随机打子弹
+            this.fire();
+        }
     }
+
+
 
 
     public void fire() {
         int bulletX = this.x + Tank.WIDTH/2 - Bullet.WIDTH;
         int bulletY = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
-        tf.bullets.add(new Bullet(bulletX,bulletY,this.dir,this.tf));
+        tf.bullets.add(new Bullet(bulletX,bulletY,this.dir,this.tf,this.group));
     }
 
     public Dir getDir() {
@@ -114,5 +126,13 @@ public class Tank {
 
     public void die() {
         this.liveing = false;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 }
