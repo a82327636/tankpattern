@@ -1,5 +1,7 @@
 package com.zwj.tank.pattern;
 
+import java.lang.reflect.Constructor;
+
 /**
  * @ProjectName: tankpattern
  * @Package: com.zwj.tank.pattern
@@ -124,9 +126,16 @@ class Execute{
 //        System.out.println(singlePattern == singlePattern1);
 
 
-        SingelPatternEnum singlePattern = SingelPatternEnum.INSTANCE;
-        SingelPatternEnum singlePattern1 = SingelPatternEnum.INSTANCE;
-        System.out.println(singlePattern == singlePattern1);
+//        SingelPatternEnum singlePattern = SingelPatternEnum.INSTANCE;
+//        SingelPatternEnum singlePattern1 = SingelPatternEnum.INSTANCE;
+//        System.out.println(singlePattern == singlePattern1);
+
+        // 使用反射破坏单例
+//        SinglePatternInside singlePattern = SinglePatternInside.getSinglePatternInside();
+//        Constructor<?>[] constructor = SinglePatternInside.class.getDeclaredConstructors();
+//        constructor[0].setAccessible(true);
+//        SinglePatternInside s2 = (SinglePatternInside)constructor[0].newInstance();
+        // newInstance() 这个方法 加了@CallerSensitive，无法反射破坏单例。1.8补上这个漏洞了？？
     }
 
 }
